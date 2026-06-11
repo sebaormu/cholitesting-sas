@@ -1,0 +1,123 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <img src="images/logo2.webp">
+        </div>
+        <div class="nav-links" [class.open]="menuOpen">
+            <a mat-button class="nav-item active" (click)="scrollTo('inicio')">Inicio</a>
+            <a mat-button class="nav-item" (click)="scrollTo('servicios')">Servicios</a>
+            <a mat-button class="nav-item" (click)="scrollTo('nosotros')">Nosotros</a>
+            <a mat-button class="nav-item" (click)="scrollTo('portafolio')">Portafolio</a>
+            <a mat-button class="nav-item" (click)="scrollTo('contacto')">Contacto</a>
+            <button mat-raised-button class="nav-cta" (click)="scrollTo('contacto')">
+                Hablar con un experto
+            </button>
+        </div>
+        <button mat-icon-button class="nav-hamburger" (click)="toggleMenu()">
+            <mat-icon>{{ menuOpen ? 'close' : 'menu' }}</mat-icon>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" class="hero-section">
+    <!-- Línea decorativa -->
+    <div class="hero-line-right"></div>
+    <div class="hero-bg-right"></div>
+
+    <div class="hero-container">
+        <div class="hero-content">
+
+            <!-- Badge con efecto entrada -->
+            <div class="hero-badge" [class.badge-visible]="badgeVisible">
+                <span class="badge-dot"></span>
+                Calidad de Software · Nivel Empresarial
+            </div>
+
+            <!-- Título con typewriter -->
+            <h1 class="hero-title">
+                <span class="title-line-1" [class.line-visible]="titleLine1Visible">Construimos software</span>
+                <span class="title-block">
+                    <span class="title-accent">
+                        <span class="typewriter-text">{{ typewriterDisplay() }}</span><span class="tw-cursor"
+                            [class.tw-blink]="twCursorBlink">|</span>
+                    </span>
+                </span>
+            </h1>
+            <!-- Botones con slide-up -->
+            <div class="hero-actions" [class.actions-visible]="actionsVisible">
+                <button mat-raised-button class="btn-primary" (click)="scrollTo('servicios')">
+                    <mat-icon>rocket_launch</mat-icon>
+                    Ver nuestros servicios
+                </button>
+                <button mat-stroked-button class="btn-secondary" (click)="scrollTo('portafolio')">
+                    <mat-icon>work_outline</mat-icon>
+                    Ver portafolio
+                </button>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+            <img src="images/banner-img.webp" alt="Equipo colaborando en proyecto de software" class="hero-image">
+        </div>
+    </div>
+
+    <div class="scroll-indicator" (click)="scrollTo('nosotros')">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+</section>
+
+
+
+<!-- POR QUÉ NOSOTROS -->
+<section id="nosotros" class="why-section">
+    <div class="section-container">
+        <div class="why-grid">
+            <div class="why-content">
+                <span class="section-eyebrow">¿Por qué CholiTesting?</span>
+                <h2 class="section-title">Software de calidad<br><span class="accent">no es negociable.</span></h2>
+                <p class="why-desc">Cada línea de código que escribimos pasa por un proceso riguroso de revisión y
+                    prueba. No esperamos al final para encontrar errores — los prevenimos desde el inicio.</p>
+                <div class="why-features">
+                    <div class="feature-item" *ngFor="let feat of features">
+                        <div class="feature-check"><mat-icon>check_circle</mat-icon></div>
+                        <div>
+                            <strong>{{ feat.title }}</strong>
+                            <p>{{ feat.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-visual">
+                <div class="metrics-card">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2 class="cta-title">¿Listo para llevar tu software al siguiente nivel?</h2>
+        <p class="cta-sub">Hablemos de tu proyecto. Sin compromisos, con soluciones reales.</p>
+        <button mat-raised-button class="btn-primary btn-large" (click)="scrollTo('contacto')">
+            <mat-icon>send</mat-icon>
+            Contactar ahora
+        </button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <mat-icon>bug_report</mat-icon>
+            <span>Choli<span class="brand-accent">Testing</span></span>
+        </div>
+        <p class="footer-copy">© {{ currentYear }} CholiTesting. Todos los derechos reservados.</p>
+    </div>
+</footer>
