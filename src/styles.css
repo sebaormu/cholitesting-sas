@@ -59,7 +59,7 @@ a { text-decoration: none; color: inherit; }
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,26,36,0.35); }
-.nav-hamburger { display: none; color: #111111 !important; }
+.nav-hamburger { display: none !important; color: #111111 !important; }
 
 /* ====== HERO ====== */
 .hero-section {
@@ -68,12 +68,15 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   padding-top: 68px;
-  background: #ffffff;
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 26, 36, 0.12), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(17, 24, 39, 0.08), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f8f8fb 100%);
   overflow: hidden;
 }
 
 .nav-brand img {
-  max-width: 250px
+  max-width: 250px;
 }
 
 .hero-line-right {
@@ -121,14 +124,21 @@ a { text-decoration: none; color: inherit; }
 .hero-container {
   position: relative;
   z-index: 2;
-  max-width: 1280px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 80px 24px 60px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 64px;
   align-items: center;
+  justify-items: center;
   width: 100%;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 780px;
+  text-align: center;
 }
 
 .hero-visual {
@@ -186,9 +196,9 @@ a { text-decoration: none; color: inherit; }
 /* Título */
 .hero-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-size: clamp(2.8rem, 4.5vw, 4.6rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.02;
   letter-spacing: -0.03em;
   color: #111111;
   margin-bottom: 24px;
@@ -284,9 +294,10 @@ a { text-decoration: none; color: inherit; }
 /* Actions */
 .hero-actions {
   display: flex;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin: 32px auto 0;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -491,7 +502,7 @@ a { text-decoration: none; color: inherit; }
 .feature-check mat-icon { color: #ff1a24; font-size: 22px; }
 .feature-item strong { display: block; color: #111111; font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
 .feature-item p { color: #666666; font-size: 0.88rem; line-height: 1.6; margin: 0; }
-.metrics-card { background: #f7f7f7; border: 1px solid #e5e5e5; border-radius: 14px; padding: 36px 32px; display: flex; flex-direction: column; gap: 28px; }
+.metrics-card { background: #fafafa; border: 1px solid #ffffff; border-radius: 14px; padding: 36px 32px; display: flex; flex-direction: column; gap: 28px; }
 .metric-bar-wrap { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .metric-label { font-size: 0.85rem; color: #666666; font-weight: 500; }
 .metric-val { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; color: #111111; }
