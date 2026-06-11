@@ -36,7 +36,8 @@
 
             <!-- Título con typewriter -->
             <h2 class="hero-title">
-                <span class="title-line-1" [class.line-visible]="titleLine1Visible">Construimos software empresariales</span>
+                <span class="title-line-1" [class.line-visible]="titleLine1Visible">Construimos software
+                    empresariales</span>
                 <span class="title-block">
                     <span class="title-accent">
                         <span class="typewriter-text">{{ typewriterDisplay() }}</span><span class="tw-cursor"
@@ -60,28 +61,45 @@
 
         <div class="hero-visual">
             <div class="hero-panel">
-                
-                
+
+
                 <div class="panel-editor">
                     <div class="editor-bar">
                         <span class="editor-dot editor-dot-red"></span>
                         <span class="editor-dot editor-dot-yellow"></span>
                         <span class="editor-dot editor-dot-green"></span>
                         <span class="editor-title">invoice-service.js</span>
+                        <span class="editor-status">
+                            <span class="editor-status-dot"></span>sin errores
+                        </span>
                     </div>
-                    <div class="panel-code">
-<pre><code>async function processInvoice(invoiceId) &#123;
-  const invoice = await invoiceService.fetch(invoiceId);
-  invoice.validate();
-  invoice.applyDiscount(0.15);
-  const result = await invoiceService.send(invoice);
 
-  return &#123;
-    status: result.status,
-    sentAt: result.sentAt,
+                    <div class="editor-body">
+                        <div class="line-numbers">
+                            <span *ngFor="let l of codeLines; let i = index">{{ i + 1 }}</span>
+                        </div>
+                        <pre class="code-content"><code>
+
+<span class="kw">async</span> <span class="kw">function</span> <span class="fn">processInvoice</span>(<span class="def">invoiceId</span>) &#123;
+  <span class="kw">const</span> <span class="def">invoice</span> = <span class="kw">await</span> <span class="obj">invoiceService</span>.<span class="fn">fetch</span>(<span class="def">invoiceId</span>);
+  <span class="def">invoice</span>.<span class="fn">validate</span>();
+  <span class="def">invoice</span>.<span class="fn">applyDiscount</span>(<span class="num">0.15</span>);
+  <span class="kw">const</span> <span class="def">result</span> = <span class="kw">await</span> <span class="obj">invoiceService</span>.<span class="fn">send</span>(<span class="def">invoice</span>);
+
+  <span class="kw">return</span> &#123;
+    <span class="prop">status</span>: <span class="def">result</span>.<span class="prop">status</span>,
+    <span class="prop">sentAt</span>: <span class="def">result</span>.<span class="prop">sentAt</span>,
   &#125;;
 &#125;
 </code></pre>
+                    </div>
+
+                    <div class="editor-footer">
+                        <span>JavaScript</span>
+                        <span>2 espacios</span>
+                        <span>UTF-8</span>
+                        <span class="footer-badge">async/await</span>
+                        <span>✓ guardado</span>
                     </div>
                 </div>
             </div>
@@ -102,7 +120,7 @@
             <div class="why-content">
                 <span class="section-eyebrow">¿Por qué CholiTesting?</span>
                 <h2 class="section-title">Software de calidad<br>no es negociable.</h2>
-                
+
                 <div class="why-slider">
                     <div class="why-slider-track" [style.transform]="'translateX(-' + activeWhySlide * 100 + '%)'">
                         <div class="why-slide" *ngFor="let item of whySlides">
@@ -114,9 +132,8 @@
                         </div>
                     </div>
                     <div class="why-slider-dots">
-                        <button type="button" *ngFor="let item of whySlides; index as i"
-                            class="why-dot" [class.active]="activeWhySlide === i"
-                            (click)="selectWhySlide(i)"
+                        <button type="button" *ngFor="let item of whySlides; index as i" class="why-dot"
+                            [class.active]="activeWhySlide === i" (click)="selectWhySlide(i)"
                             aria-label="Mostrar {{ item.tag }}"></button>
                     </div>
                 </div>

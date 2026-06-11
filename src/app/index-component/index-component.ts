@@ -38,6 +38,7 @@ export class IndexComponent {
   terminalRunning = false;
   showProgress = false;
   progressPct = 0;
+  codeLines = Array(14)
 
   features = [
     { title: 'Testing desde el día 1', desc: 'No esperamos al final. Las pruebas son parte del proceso desde el primer sprint.' },
