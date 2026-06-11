@@ -58,7 +58,34 @@
 
         </div>
 
-       
+        <div class="hero-visual">
+            <div class="hero-panel">
+                
+                
+                <div class="panel-editor">
+                    <div class="editor-bar">
+                        <span class="editor-dot editor-dot-red"></span>
+                        <span class="editor-dot editor-dot-yellow"></span>
+                        <span class="editor-dot editor-dot-green"></span>
+                        <span class="editor-title">invoice-service.js</span>
+                    </div>
+                    <div class="panel-code">
+<pre><code>async function processInvoice(invoiceId) &#123;
+  const invoice = await invoiceService.fetch(invoiceId);
+  invoice.validate();
+  invoice.applyDiscount(0.15);
+  const result = await invoiceService.send(invoice);
+
+  return &#123;
+    status: result.status,
+    sentAt: result.sentAt,
+  &#125;;
+&#125;
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="scroll-indicator" (click)="scrollTo('nosotros')">
@@ -75,15 +102,22 @@
             <div class="why-content">
                 <span class="section-eyebrow">¿Por qué CholiTesting?</span>
                 <h2 class="section-title">Software de calidad<br>no es negociable.</h2>
-                <p class="why-desc">Cada línea de código que escribimos pasa por un proceso riguroso de revisión y
-                    prueba. No esperamos al final para encontrar errores — los prevenimos desde el inicio.</p>
-                <div class="why-features">
-                    <div class="feature-item" *ngFor="let feat of features">
-                        <div class="feature-check"><mat-icon>check_circle</mat-icon></div>
-                        <div>
-                            <strong>{{ feat.title }}</strong>
-                            <p>{{ feat.desc }}</p>
+                
+                <div class="why-slider">
+                    <div class="why-slider-track" [style.transform]="'translateX(-' + activeWhySlide * 100 + '%)'">
+                        <div class="why-slide" *ngFor="let item of whySlides">
+                            <div class="why-slide-card">
+                                <span class="slide-tag">{{ item.tag }}</span>
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.text }}</p>
+                            </div>
                         </div>
+                    </div>
+                    <div class="why-slider-dots">
+                        <button type="button" *ngFor="let item of whySlides; index as i"
+                            class="why-dot" [class.active]="activeWhySlide === i"
+                            (click)="selectWhySlide(i)"
+                            aria-label="Mostrar {{ item.tag }}"></button>
                     </div>
                 </div>
             </div>

@@ -45,19 +45,40 @@ export class IndexComponent {
     { title: 'Entrega predecible', desc: 'Sprints claros, sin sorpresas ni deuda técnica acumulada.' },
     { title: 'Soporte post-lanzamiento', desc: 'Seguimos contigo después del go-live con monitoreo y mantenimiento.' },
   ];
- 
- 
+
+  whySlides = [
+    { tag: 'Metodología', title: 'Sprints claros con entregas previsibles', text: 'Planificamos cada etapa con fechas reales, entregables definidos y revisiones constantes para que no haya sorpresas.' },
+    { tag: 'Calidad', title: 'QA integrado en cada entrega', text: 'Las pruebas forman parte del ciclo de desarrollo, no una fase extra. Así reducimos errores y aceleramos la puesta en marcha.' },
+    { tag: 'Soporte', title: 'Acompañamiento post-lanzamiento', text: 'No solo entregamos el producto; nos aseguramos de que funcione con monitoreo y mejoras continuas.' },
+  ];
+
+  activeWhySlide = 0;
+  private whySlideInterval: any;
   private timers: any[] = [];
  
   ngOnInit() {
     this.startHeroSequence();
     this.startTypewriter();
+    this.startWhySlider();
   }
  
   ngAfterViewInit() {}
  
   ngOnDestroy() {
     this.timers.forEach(t => clearTimeout(t));
+    if (this.whySlideInterval) {
+      clearInterval(this.whySlideInterval);
+    }
+  }
+ 
+  startWhySlider() {
+    this.whySlideInterval = setInterval(() => {
+      this.activeWhySlide = (this.activeWhySlide + 1) % this.whySlides.length;
+    }, 4200);
+  }
+ 
+  selectWhySlide(index: number) {
+    this.activeWhySlide = index;
   }
  
   startHeroSequence() {
