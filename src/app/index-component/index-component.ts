@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
- 
-interface Particle { x: number; y: number; text: string; duration: string; delay: string; size: number; opacity: number; }
-interface AnimatedStat { prefix: string; current: number | string; target: number; suffix: string; label: string; popped: boolean; isText?: boolean; }
- 
+  
 @Component({
   selector: 'app-index-component',
   imports: [CommonModule,
@@ -24,7 +21,7 @@ export class IndexComponent {
   // Typewriter
   typewriterDisplay = signal('');
   twCursorBlink = false;
-  private typewriterPhrases = ['que no falla.', 'que escala.', 'que impresiona.', 'con QA total.'];
+  private typewriterPhrases = ['fiables.', 'que escala.', 'que impresiona.', 'con QA total.'];
   private twIndex = 0;
   private twCharIndex = 0;
   private twDeleting = false;
